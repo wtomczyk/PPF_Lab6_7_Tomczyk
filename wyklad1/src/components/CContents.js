@@ -10,7 +10,7 @@ class CContents extends Component {
         const imgContext = require.context('../res/',false,/\.png$/)
         let img={}
         this.imgs=imgContext.keys().reduce((icons,file)=>{
-            const cname = imgContext(file).default
+            const cname = imgContext(file)
             const label = file.slice(2, -4)
             img[label] = cname
             return img 
@@ -20,6 +20,7 @@ class CContents extends Component {
     changeMsg =()=>{
         this.setState({msg:'Właśnie jesteś uczestnikiem kursu React, gratulacje'})
     }
+    
     render(){
         /*const items=[]
         for(let i=0;i<this.txtData().count;i++){
@@ -31,17 +32,17 @@ class CContents extends Component {
                 </div>
             ) 
         }*/
-        /*
+        
         const tabData = this.txtData2().data;
         const items = tabData.map((item)=>(
             <div id={`"div${item.id}"`} className="contentsFlex">
-                <img className="contentsFlexImg" src={this.imgs[items.img]} alt=""/>
+                <img className="contentsFlexImg" src={this.imgs[item.img]} alt=""/>
                 <p className="contentsFlexTxt">{item.text}</p>
             </div>
-        ))*/
+        ))
         return(
             <div className="contentsDivClass">
-                {/*items*/}
+                {items}
                 <h1>
                     {this.state.msg}
                 </h1>
